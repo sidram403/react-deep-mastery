@@ -22,13 +22,31 @@ function Parent(): React.ReactElement {
    *
    * Therefore, interval callback always sees count = 0.
    */
+  //   useEffect(() => {
+  //     const intervalId = setInterval(() => {
+  //       console.log("Logged Count:", count);
+  //     }, 1000);
+
+  //     return () => clearInterval(intervalId);
+  //   }, []);
+
+  /**
+   * Fix 1 : Add Dependency
+   *
+   * Now effect re-runs when count changes
+   *
+   * But There's problem
+   * Every time count changes :
+   * - Cleanup runs
+   * - New interval created
+   */
   useEffect(() => {
     const intervalId = setInterval(() => {
       console.log("Logged Count:", count);
     }, 1000);
 
     return () => clearInterval(intervalId);
-  }, []);
+  }, [count]);
 
   return (
     <section style={{ padding: "2rem", border: "1px solid teal" }}>
