@@ -7,10 +7,6 @@ import Child from "./Child";
  * Holds state and triggers re-renders
  * Used to visualize React's render propagation behavior
  *
- * Now includes:
- * - count state
- * - theme state  (unrelated to child)
- *
  * Purpose :
  * Demonstrate how even unrelated state changes
  * cause child re-renders
