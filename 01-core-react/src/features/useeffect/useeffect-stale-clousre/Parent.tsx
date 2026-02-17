@@ -40,13 +40,32 @@ function Parent(): React.ReactElement {
    * - Cleanup runs
    * - New interval created
    */
+  //   useEffect(() => {
+  //     const intervalId = setInterval(() => {
+  //       console.log("Logged Count:", count);
+  //     }, 1000);
+
+  //     return () => clearInterval(intervalId);
+  //   }, [count]);
+
+  /**
+   * Fix 2 : Better Pattern using Functional Update
+   *
+   * Now we:
+   * - Avoid stale closure
+   * - Avoid effect re-creation
+   * - Use functional state access
+   */
   useEffect(() => {
     const intervalId = setInterval(() => {
-      console.log("Logged Count:", count);
+      setCount((prev) => {
+        console.log("Logged Count:", prev);
+        return prev;
+      });
     }, 1000);
 
     return () => clearInterval(intervalId);
-  }, [count]);
+  }, []);
 
   return (
     <section style={{ padding: "2rem", border: "1px solid teal" }}>
