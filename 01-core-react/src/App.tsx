@@ -6,6 +6,7 @@ import { UseCallabackStabilization } from "./features/usecallback-stabilization"
 import { UseEffectBasics } from "./features/useeffect/useeffect-basics";
 import { UseEffectDependencyTrap } from "./features/useeffect/useeffect-dependency-trap";
 import { UseEffectCleanup } from "./features/useeffect/useeffect-clenup";
+import { UseEffectStaleClosure } from "./features/useeffect/useeffect-stale-clousre";
 
 /**
  * Application root
@@ -25,6 +26,7 @@ function App(): React.ReactElement {
       <UseEffectBasics />
       <UseEffectDependencyTrap />
       <UseEffectCleanup />
+      <UseEffectStaleClosure />
     </main>
   );
 }
