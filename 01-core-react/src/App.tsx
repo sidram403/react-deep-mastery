@@ -2,6 +2,7 @@ import React from "react";
 import { RenderBehavior } from "./features/render-behavior";
 import { MemoWithProps } from "./features/memo-with-props";
 import { UseMemoStabilization } from "./features/usememo-stabilization";
+import { UseCallabackStabilization } from "./features/usecallback-stabilization";
 
 /**
  * Application root
@@ -17,6 +18,7 @@ function App(): React.ReactElement {
       <RenderBehavior />
       <MemoWithProps />
       <UseMemoStabilization />
+      <UseCallabackStabilization />
     </main>
   );
 }
