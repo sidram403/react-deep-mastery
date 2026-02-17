@@ -25,11 +25,20 @@ function Parent(): React.ReactElement {
    * This creates:
    * Render -> Effect -> setState -> Render -> Effect -> ...
    */
+  //   useEffect(() => {
+  //     if (count < 3) {
+  //       setCount(count + 1);
+  //     }
+  //   }, [count]);
+
+  /**
+   * Correct Pattern to avoid dependency-trap
+   * If you want to initialize state,
+   * use empty dependency array.
+   */
   useEffect(() => {
-    if (count < 3) {
-      setCount(count + 1);
-    }
-  }, [count]);
+    setCount(3);
+  }, []);
 
   return (
     <section style={{ padding: "2rem", border: "1px solid red" }}>
