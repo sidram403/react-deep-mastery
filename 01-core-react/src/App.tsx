@@ -1,5 +1,6 @@
 import React from "react";
 import { RenderBehavior } from "./features/render-behavior";
+import { MemoWithProps } from "./features/render-behavior/memo-with-props";
 
 /**
  * Application root
@@ -13,6 +14,7 @@ function App(): React.ReactElement {
     <main>
       <h1>01 - Core React Funndations</h1>
       <RenderBehavior />
+      <MemoWithProps />
     </main>
   );
 }
