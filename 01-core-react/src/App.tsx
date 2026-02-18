@@ -10,6 +10,7 @@ import { UseEffectStaleClosure } from "./features/useeffect/useeffect-stale-clou
 import { UseRefDomAccess } from "./features/useRef/useref-dom-access";
 import { UseRefPersistValue } from "./features/useRef/usref-persist-value";
 import { UseRefPreviousValue } from "./features/useRef/useref-previous-value";
+import { UseRefVsUseState } from "./features/useRef/useref-vs-usestate";
 
 /**
  * Application root
@@ -33,6 +34,7 @@ function App(): React.ReactElement {
       <UseRefDomAccess />
       <UseRefPersistValue />
       <UseRefPreviousValue />
+      <UseRefVsUseState />
     </main>
   );
 }
