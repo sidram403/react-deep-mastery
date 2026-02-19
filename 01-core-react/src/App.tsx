@@ -12,6 +12,7 @@ import { UseRefPersistValue } from "./features/useRef/usref-persist-value";
 import { UseRefPreviousValue } from "./features/useRef/useref-previous-value";
 import { UseRefVsUseState } from "./features/useRef/useref-vs-usestate";
 import { UseRefImperativePattern } from "./features/useRef/useref-imperative-pattern";
+import { ContextBasic } from "./features/context-api/context-basic";
 
 /**
  * Application root
@@ -37,6 +38,7 @@ function App(): React.ReactElement {
       <UseRefPreviousValue />
       <UseRefVsUseState />
       <UseRefImperativePattern />
+      <ContextBasic />
     </main>
   );
 }
