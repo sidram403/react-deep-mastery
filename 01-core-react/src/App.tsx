@@ -13,6 +13,7 @@ import { UseRefPreviousValue } from "./features/useRef/useref-previous-value";
 import { UseRefVsUseState } from "./features/useRef/useref-vs-usestate";
 import { UseRefImperativePattern } from "./features/useRef/useref-imperative-pattern";
 import { ContextBasic } from "./features/context-api/context-basic";
+import { ContextRenderProbelm } from "./features/context-api/context-render-problem";
 
 /**
  * Application root
@@ -39,6 +40,7 @@ function App(): React.ReactElement {
       <UseRefVsUseState />
       <UseRefImperativePattern />
       <ContextBasic />
+      <ContextRenderProbelm />
     </main>
   );
 }
