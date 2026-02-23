@@ -15,6 +15,7 @@ import { UseRefImperativePattern } from "./features/useRef/useref-imperative-pat
 import { ContextBasic } from "./features/context-api/context-basic";
 import { ContextRenderProbelm } from "./features/context-api/context-render-problem";
 import { ContextSplitOptimization } from "./features/context-api/context-split-optimization";
+import { ContextSelectorPattern } from "./features/context-api/context-selector-pattern";
 
 /**
  * Application root
@@ -43,6 +44,7 @@ function App(): React.ReactElement {
       <ContextBasic />
       <ContextRenderProbelm />
       <ContextSplitOptimization />
+      <ContextSelectorPattern />
     </main>
   );
 }
