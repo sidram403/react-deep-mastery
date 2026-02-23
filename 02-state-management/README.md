@@ -1,73 +1,175 @@
-# React + TypeScript + Vite
+# 02 – State Management (Redux Toolkit Deep Dive)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## 📌 Overview
 
-Currently, two official plugins are available:
+This module focuses on understanding **Redux Toolkit** as a scalable and performance-oriented state management solution for React applications.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+The goal of this section is not just to use Redux, but to deeply understand:
 
-## React Compiler
+- Why Redux exists
+- How it works internally
+- How it differs from Context API
+- How async state is handled
+- How fine-grained subscriptions improve performance
+- When Redux should and should not be used
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+---
 
-## Expanding the ESLint configuration
+# 🎯 Learning Objectives
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+After completing this module, you should be able to:
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+- Explain Redux architecture clearly in interviews
+- Understand store, reducer, action flow
+- Implement slices using Redux Toolkit
+- Handle async operations using `createAsyncThunk`
+- Understand middleware role in Redux
+- Optimize performance using selective subscriptions
+- Compare Redux vs Context with technical clarity
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+---
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+# 🏗 Architecture Overview
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+Redux follows a unidirectional data flow:
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+Component
+↓
+dispatch(action)
+↓
+Middleware (optional)
+↓
+Reducer (pure function)
+↓
+New Immutable State
+↓
+Store notifies subscribers
+↓
+useSelector compares selected slice
+↓
+Component re-renders (if needed)
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+---
+
+# 📂 Project Structure
+
+src/
+app/
+store.ts
+
+features/
+counter/ → Basic synchronous slice
+theme/ → Global UI state example
+user/ → Async state using createAsyncThunk
+
+---
+
+# 🧩 Concepts Covered
+
+## 1️⃣ Store Configuration
+
+- `configureStore`
+- Root reducer setup
+- DevTools integration
+- Default middleware (Redux Thunk)
+
+---
+
+## 2️⃣ Slices & Reducers
+
+- `createSlice`
+- Action creators auto-generated
+- Immer-powered immutable updates
+- Pure reducer principles
+
+---
+
+## 3️⃣ Fine-Grained Subscription
+
+- `useSelector`
+- Strict equality comparison (`===`)
+- Avoiding unnecessary re-renders
+- Why selecting entire state is bad
+
+---
+
+## 4️⃣ Global UI State
+
+- Theme management using Redux
+- Comparison with Context API
+- Performance benefits of slice-level subscription
+
+---
+
+## 5️⃣ Async State Management
+
+- `createAsyncThunk`
+- pending / fulfilled / rejected lifecycle
+- Loading and error handling
+- Why reducers must remain pure
+- Middleware-driven async flow
+
+---
+
+## 6️⃣ Performance Awareness
+
+- Immutable state detection
+- Selector-based re-render control
+- Avoiding root state selection
+- Predictable state transitions
+
+---
+
+# 🔍 Why Redux Over Context?
+
+| Feature                   | Context API | Redux Toolkit |
+| ------------------------- | ----------- | ------------- |
+| Fine-grained subscription | ❌ No       | ✅ Yes        |
+| Middleware support        | ❌ No       | ✅ Yes        |
+| Async lifecycle handling  | Manual      | Built-in      |
+| DevTools & Time Travel    | ❌ No       | ✅ Yes        |
+| Large-scale scalability   | Limited     | Strong        |
+
+---
+
+# 🧠 Core Architectural Principles
+
+- Reducers must be pure and deterministic
+- Side effects belong in middleware
+- State updates must be immutable
+- Components should select minimal required state
+- Global state should remain predictable
+
+---
+
+# 🏆 Interview Topics Covered in This Module
+
+- Why reducers must be pure
+- How Redux detects state changes
+- What is a thunk
+- How createAsyncThunk works internally
+- Difference between reducers and extraReducers
+- Why immutability matters
+- Redux vs Context performance comparison
+- Middleware architecture in Redux
+
+---
+
+# 🚀 Outcome of This Module
+
+By completing `02-state-management`, you now understand:
+
+- Production-grade Redux Toolkit usage
+- Async state handling
+- Performance-optimized subscriptions
+- Clean state architecture
+- Interview-level explanation of Redux internals
+
+---
+
+Next modules will expand into:
+
+- Advanced selector optimization
+- Custom middleware implementation
+- RTK Query (data fetching abstraction)
+- Performance debugging strategies
